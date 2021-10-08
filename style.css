@@ -26,11 +26,21 @@ body {
 #home__carousel__nav {
     position: absolute;
     display: flex;
-    top: 2.5rem;
+    top: 3rem;
+    left: 2.8rem;
+}
+
+#home__carousel__nav__links {
+    display: flex;
+    margin-left: 2rem;
 }
 
 #home__carousel__nav li {
     list-style: none;
+    margin-left: 1.5rem;
+    font-size: 0.8rem;
+    color: #fff;
+    cursor: pointer;
 }
 
 .home__text1 {
