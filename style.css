@@ -85,6 +85,24 @@ body {
 
 #home__text1__button {
     margin-top: 2rem;
+    letter-spacing: 8px;
+    font-size: 0.8rem;
+}
+
+#home__text1__button:hover {
+    color: #707070;
+    transition: color 0.2s ease-in-out;
+}
+
+#home__text1__button:hover > #home__text1__button__arrow {
+    animation-name: slideout;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideout {
+    from {margin-left: 0.6rem; filter: opacity(100%);}
+    to {margin-left: 1.4rem; filter: opacity(50%);}
 }
 
 #home__text1__button {
