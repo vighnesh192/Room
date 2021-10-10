@@ -41,6 +41,27 @@ body {
     font-size: 0.8rem;
     color: #fff;
     cursor: pointer;
+    position: relative;
+}
+
+#home__carousel__nav li:hover::after {
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    top: 1.1rem;
+    width: 5%;
+    height: 2px;
+    left: 50%;
+    right: 50%;
+    animation-name: link_hover;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes link_hover {
+    from {width: 5%; left: 50%; right: 50%;}
+    to {width: 100%; left: 0%; right: 0%;}
 }
 
 .home__text1 {
