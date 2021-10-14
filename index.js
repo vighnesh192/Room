@@ -1,12 +1,13 @@
 let homeText = document.getElementsByClassName("home__text")[0];
+let heroImgList = document.getElementsByClassName("home__hero__img");
+let activeImg = document.getElementsByClassName("home__hero__img")[0];
+
 let divArrowsParent = document.createElement('div');
 let divWithLeftArrow = document.createElement('div');
 let divWithRightArrow = document.createElement('div');
 
-// console.log(document.getElementsByClassName("home__text"));
-
 const createArrows = (homeText, fromButtonClick) => {
-    console.log('HOME TEXT ARROW:----', homeText)
+    // console.log('HOME TEXT ARROW:----', homeText)
     let leftArrowImage = document.createElement('img');
     leftArrowImage.setAttribute('src', './images/icon-angle-left.svg');
     leftArrowImage.setAttribute('id', 'left__arrow');
@@ -34,9 +35,7 @@ createArrows(homeText, false);
 
 // Click Handler:-
 divWithLeftArrow.onclick = () => {
-    console.log(homeText.previousElementSibling);
     let newHomeText = homeText;
-    // homeText.lastChild.style.display = "none";
     homeText.style.display = "none";
     if(homeText.previousElementSibling.className == 'home__carousel') {
         document.getElementById('home__text3').style.display = 'block';
@@ -48,12 +47,24 @@ divWithLeftArrow.onclick = () => {
     }
     homeText.display = 'block';
     homeText = newHomeText;
+
+    // Set Image:-
+    let newImage = activeImg;
+    activeImg.style.display = "none";
+    if(newImage.previousElementSibling.classList.contains('home__hero__img')) {
+        newImage.previousElementSibling.style.display = 'block'
+        activeImg = newImage.previousElementSibling;
+    } 
+    else {
+        document.getElementById('home__hero__img3').style.display = 'block';
+        activeImg = document.getElementById('home__hero__img3');
+    }
+
+
     createArrows(newHomeText, true);
 }
 
 divWithRightArrow.onclick = () => {
-    // console.log(homeText.nextElementSibling);
-    // console.log(document.getElementById(homeText.id));
     let newHomeText = homeText;
     document.getElementById(homeText.id).style.display = "none";
     if(homeText.nextElementSibling.className == 'home__about__img1') {
@@ -65,5 +76,18 @@ divWithRightArrow.onclick = () => {
         newHomeText = newHomeText.nextElementSibling;
     }
     homeText = newHomeText;
+
+    // Set Image:-
+    let newImage = activeImg;
+    activeImg.style.display = "none";
+    if(newImage.nextElementSibling != null && newImage.nextElementSibling.classList.contains('home__hero__img')) {
+        newImage.nextElementSibling.style.display = 'block'
+        activeImg = newImage.nextElementSibling;
+    } 
+    else {
+        document.getElementById('home__hero__img1').style.display = 'block';
+        activeImg = document.getElementById('home__hero__img1');
+    }
+
     createArrows(newHomeText, true);
 }
