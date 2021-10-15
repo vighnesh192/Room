@@ -2,12 +2,18 @@ let homeText = document.getElementsByClassName("home__text")[0];
 let heroImgList = document.getElementsByClassName("home__hero__img");
 let activeImg = document.getElementsByClassName("home__hero__img")[0];
 
+// Carousel Selectors
+const carouselSlide = document.querySelector('.home__carousel__images'); 
+const carouselImages = document.querySelectorAll('.home__hero__img');
+let counter = 1;
+const size = carouselImages[0].clientWidth;
+carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+
 let divArrowsParent = document.createElement('div');
 let divWithLeftArrow = document.createElement('div');
 let divWithRightArrow = document.createElement('div');
 
 const createArrows = (homeText, fromButtonClick) => {
-    // console.log('HOME TEXT ARROW:----', homeText)
     let leftArrowImage = document.createElement('img');
     leftArrowImage.setAttribute('src', './images/icon-angle-left.svg');
     leftArrowImage.setAttribute('id', 'left__arrow');
@@ -48,17 +54,23 @@ divWithLeftArrow.onclick = () => {
     homeText.display = 'block';
     homeText = newHomeText;
 
-    // Set Image:-
-    let newImage = activeImg;
-    activeImg.style.display = "none";
-    if(newImage.previousElementSibling.classList.contains('home__hero__img')) {
-        newImage.previousElementSibling.style.display = 'block'
-        activeImg = newImage.previousElementSibling;
-    } 
-    else {
-        document.getElementById('home__hero__img3').style.display = 'block';
-        activeImg = document.getElementById('home__hero__img3');
-    }
+    // // Set Image:-
+    // let newImage = activeImg;
+    // activeImg.style.display = "none";
+    // if(newImage.previousElementSibling.classList.contains('home__hero__img')) {
+    //     newImage.previousElementSibling.style.display = 'block'
+    //     activeImg = newImage.previousElementSibling;
+    // } 
+    // else {
+    //     document.getElementById('home__hero__img3').style.display = 'block';
+    //     activeImg = document.getElementById('home__hero__img3');
+    // }
+
+    // Carousel:-
+    if(counter <= 0) return;
+    carouselSlide.style.transition = "transform 0.4s ease-in-out";
+    counter--;
+    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 
 
     createArrows(newHomeText, true);
@@ -77,17 +89,47 @@ divWithRightArrow.onclick = () => {
     }
     homeText = newHomeText;
 
-    // Set Image:-
-    let newImage = activeImg;
-    activeImg.style.display = "none";
-    if(newImage.nextElementSibling != null && newImage.nextElementSibling.classList.contains('home__hero__img')) {
-        newImage.nextElementSibling.style.display = 'block'
-        activeImg = newImage.nextElementSibling;
-    } 
-    else {
-        document.getElementById('home__hero__img1').style.display = 'block';
-        activeImg = document.getElementById('home__hero__img1');
-    }
+    // // Set Image:-
+    // let newImage = activeImg;
+    // console.log(document.getElementById(newImage.id).style)
+    // console.log(activeImg.clientWidth)
+    // activeImg.animate([
+    //     // keyframes
+    //     { transform: 'translateX(0px)' },
+    //     { transform: `translateX(-${newImage.clientWidth}px)` }
+    //   ], {
+    //     // timing options
+    //     duration: 2000,
+    //     iterations: 1
+    // });
+    // activeImg.style.display = "none";
+    // if(newImage.nextElementSibling != null && newImage.nextElementSibling.classList.contains('home__hero__img')) {
+    //     newImage.nextElementSibling.style.display = 'block'
+    //     activeImg = newImage.nextElementSibling;
+    // } 
+    // else {
+    //     document.getElementById('home__hero__img1').style.display = 'block';
+    //     activeImg = document.getElementById('home__hero__img1');
+    // }
+
+    // Carousel:-
+    if(counter > carouselImages.length) return;
+    carouselSlide.style.transition = "transform 0.4s ease-in-out";
+    counter++;
+    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 
     createArrows(newHomeText, true);
 }
+
+carouselSlide.addEventListener('transitionend', () => {
+    if(carouselImages[counter].id == 'lastClone') {
+        carouselSlide.style.transition = 'none';
+        counter = carouselImages.length - 2;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+    if(carouselImages[counter].id == 'firstClone') {
+        carouselSlide.style.transition = 'none';
+        counter = carouselImages.length - counter;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+})

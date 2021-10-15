@@ -21,6 +21,7 @@ body {
     grid-column: 1/8;
     grid-row: 1/3;
     position: relative;
+    overflow: hidden;
 }
 
 #home__carousel__nav {
@@ -196,8 +197,12 @@ body {
     grid-row: 3/4;
 }
 
-.home__hero__img, #home__about__img1, #home__about__img2 {
+.home__carousel__images, .home__hero__img, #home__about__img1, #home__about__img2 {
     object-fit: cover;
     width: 100%;
     height: 100%;
+}
+
+.home__carousel__images {
+    display: flex;
 }
