@@ -1,4 +1,5 @@
 let homeText = document.getElementsByClassName("home__text")[0];
+let homeCarousel = document.getElementsByClassName("home__carousel")[0];
 let heroImgList = document.getElementsByClassName("home__hero__img");
 let activeImg = document.getElementsByClassName("home__hero__img")[0];
 
@@ -6,7 +7,7 @@ let activeImg = document.getElementsByClassName("home__hero__img")[0];
 const carouselSlide = document.querySelector('.home__carousel__images'); 
 const carouselImages = document.querySelectorAll('.home__hero__img');
 let counter = 1;
-const size = carouselImages[0].clientWidth;
+const size = homeCarousel.clientWidth;
 carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 
 let divArrowsParent = document.createElement('div');
