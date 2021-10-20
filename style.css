@@ -32,6 +32,12 @@ body {
 .home__carousel__images img {
     min-width: 896px;
 }
+
+@media(max-width: 1366px) {
+    .home__carousel__images img {
+        min-width: 797px;
+    }
+}
 /* Worked after commenting this and adding min-width 896px
 .home__hero__img {
     object-fit: cover;
