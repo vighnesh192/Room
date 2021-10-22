@@ -14,11 +14,15 @@ body {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+        "ci ci ci ci ci ci ci ct ct ct ct ct"
+        "ci ci ci ci ci ci ci ct ct ct ct ct"
+        "hai1 hai1 hai1 hat hat hat hat hat hat hai2 hai2 hai2"
 }
 
 /* Row 1:- */
 .home__carousel {
-    grid-column: 1/8;
+    grid-area: ci;
     grid-row: 1/3;
     position: relative;
     overflow: hidden;
@@ -33,7 +37,7 @@ body {
     min-width: 896px;
 }
 
-@media(max-width: 1366px) {
+@media(min-width: 481px) and (max-width: 1366px) {
     .home__carousel__images img {
         min-width: 797px;
     }
@@ -88,8 +92,8 @@ body {
 
 .home__text {
     position: relative;
-    grid-column: 8/13;
-    grid-row: 1/3;
+    grid-row: 3/5;
+    grid-area: ct;
     height: 100%;
     padding: 15%;
     /* display: grid;
@@ -195,13 +199,13 @@ body {
 
 /* ROW 2:- */
 .home__about__img1 {
-    grid-column: 1/4;
     grid-row: 3/4;
+    grid-area: hai1;
 }
 
 .home__about__text {
-    grid-column: 4/10;
     grid-row: 3/4;
+    grid-area: hat;
     display: grid;
     align-items: center;
     max-width: 80%;
@@ -210,7 +214,7 @@ body {
 }
 
 #home__about__heading {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -224,12 +228,80 @@ body {
 }
 
 .home__about__img2 {
-    grid-column: 10/13;
     grid-row: 3/4;
+    grid-area: hai2;
 }
 
 #home__about__img1, #home__about__img2 {
     object-fit: cover;
     width: 100%;
     height: 100%;
+}
+
+/* @media (min-width: 481px) {
+    .mobile-image {
+        display: none;
+    }
+} */
+
+/* -----MOBILE----- */
+@media (max-width: 480px) {
+
+    .home {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-areas: 
+            "ci"
+            "ct"
+            "hai1"
+            "hat"
+            "hai2"
+    }
+
+    .home__hero__img {
+        min-width: 100vw;
+    }
+
+    #home__carousel__nav {
+        width: 100%;
+        left: 0;
+    }
+    
+    #home__carousel__nav__logo {
+        padding-right: 2rem;
+        margin: auto;
+    }
+ 
+    #home__carousel__nav__links {
+        display: none;
+    }
+    
+    .home__carousel__images img {
+        min-width: 100vw;
+    }
+
+    .home__text {
+        margin-top: 96%;
+        padding: 10%;
+        padding-top: 20%;
+        padding-bottom: 30%;
+        height: unset;
+    }
+
+    .home__text__heading {
+        font-size: 1.7rem;
+    }
+
+    .home__text__arrows__parent {
+        left: auto;
+        right: 0;
+        top: -55.5px;
+    }
+
+    .home__about__text {
+        max-width: unset;
+        padding: 20% 10%;
+    }
 }

@@ -2,8 +2,14 @@ let homeText = document.getElementsByClassName("home__text")[0];
 let homeCarousel = document.getElementsByClassName("home__carousel")[0];
 let heroImgList = document.getElementsByClassName("home__hero__img");
 let activeImg = document.getElementsByClassName("home__hero__img")[0];
+const homeCarouselImags = document.getElementsByClassName("home__carousel__images")[0];
 const homeTextHeading = document.getElementById("home__text1__heading");
 const homeTextPara = document.getElementById("home__text1__para");
+const lastClone = document.getElementById("lastClone");
+const homeHeroImg1 = document.getElementById("home__hero__img1");
+const homeHeroImg2 = document.getElementById("home__hero__img2");
+const homeHeroImg3 = document.getElementById("home__hero__img3");
+const firstClone = document.getElementById("firstClone");
 
 // Carousel Selectors
 const carouselSlide = document.querySelector('.home__carousel__images'); 
@@ -141,3 +147,18 @@ carouselSlide.addEventListener('transitionend', () => {
         carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
     }
 })
+
+function myFunction(x) {
+    if (x.matches) { // If media query matches
+      lastClone.setAttribute('src', "images\\mobile-image-hero-3.jpg")
+      homeHeroImg1.setAttribute('src', "images\\mobile-image-hero-1.jpg")
+      homeHeroImg2.setAttribute('src', "images\\mobile-image-hero-2.jpg")
+      homeHeroImg3.setAttribute('src', "images\\mobile-image-hero-3.jpg")
+      firstClone.setAttribute('src', "images\\mobile-image-hero-1.jpg")
+      divArrowsParent.style.top = `-${divArrowsParent.clientHeight}px`;
+    }
+  }
+  
+  var x = window.matchMedia("(max-width: 480px)")
+  myFunction(x) // Call listener function at run time
+  x.addListener(myFunction) // Attach listener function on state changes
