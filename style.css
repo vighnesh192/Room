@@ -113,6 +113,16 @@ body {
     grid-column: 3/11; */
 }
 
+@keyframes home__text__fade__in {
+    from { opacity: 0%; }
+    to { opacity: 100%; }
+}
+
+@keyframes home__text__fade__out {
+    from { opacity: 100%; }
+    to { opacity: 0%; }
+}
+
 .home__text__button {
     position: absolute;
     margin-top: 2rem;
