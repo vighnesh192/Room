@@ -2,6 +2,8 @@ let homeText = document.getElementsByClassName("home__text")[0];
 let homeCarousel = document.getElementsByClassName("home__carousel")[0];
 let heroImgList = document.getElementsByClassName("home__hero__img");
 let activeImg = document.getElementsByClassName("home__hero__img")[0];
+const homeTextHeading = document.getElementById("home__text1__heading");
+const homeTextPara = document.getElementById("home__text1__para");
 
 // Carousel Selectors
 const carouselSlide = document.querySelector('.home__carousel__images'); 
@@ -40,6 +42,10 @@ const createArrows = (homeText, fromButtonClick) => {
 
 createArrows(homeText, false);
 
+const fadeIn = (el) => {
+    el.style.animation = "home__text__fade__in 0.8s forwards";
+}
+
 // Click Handler:-
 divWithLeftArrow.onclick = () => {
     let newHomeText = homeText;
@@ -54,6 +60,7 @@ divWithLeftArrow.onclick = () => {
     }
     homeText.display = 'block';
     homeText = newHomeText;
+    fadeIn(homeText)
 
     // // Set Image:-
     // let newImage = activeImg;
@@ -89,7 +96,7 @@ divWithRightArrow.onclick = () => {
         newHomeText = newHomeText.nextElementSibling;
     }
     homeText = newHomeText;
-
+    fadeIn(homeText)
     // // Set Image:-
     // let newImage = activeImg;
     // console.log(document.getElementById(newImage.id).style)
