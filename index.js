@@ -10,6 +10,20 @@ const homeHeroImg1 = document.getElementById("home__hero__img1");
 const homeHeroImg2 = document.getElementById("home__hero__img2");
 const homeHeroImg3 = document.getElementById("home__hero__img3");
 const firstClone = document.getElementById("firstClone");
+const closeIcon = document.getElementById("close__icon");
+const hamIcon = document.getElementById("home__carousel__nav__hamburger");
+const nav = document.getElementById("home__carousel__nav__links");
+
+// Menu
+hamIcon.addEventListener('click', (e) => {
+    console.log("HERE", e)
+    nav.style.animation = "nav__fade__in 0.5s forwards";
+})
+
+closeIcon.addEventListener('click', (e) => {
+    console.log("THERE", e)
+    nav.style.animation = "nav__fade__out 0.5s";
+})
 
 // Carousel Selectors
 const carouselSlide = document.querySelector('.home__carousel__images'); 
