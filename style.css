@@ -346,8 +346,8 @@ body {
     }
 
     @keyframes nav__fade__out {
-        from { height: 12vh; }
-        to { height: 0vh; }
+        from { opacity: 100%; height: 12vh; }
+        to { opacity: 0%; height: 0vh; }
     }
 
 }
